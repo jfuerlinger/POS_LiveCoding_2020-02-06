@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCoding.ConsoleApp", "LiveCoding.ConsoleApp\LiveCoding.ConsoleApp.csproj", "{98462198-DBDE-4E1A-869C-148BC56AB929}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LiveCoding.Core", "LiveCoding.Core\LiveCoding.Core.csproj", "{A336D8C3-1AFC-47B5-92E9-13009EC56033}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{98462198-DBDE-4E1A-869C-148BC56AB929}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{98462198-DBDE-4E1A-869C-148BC56AB929}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{98462198-DBDE-4E1A-869C-148BC56AB929}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A336D8C3-1AFC-47B5-92E9-13009EC56033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A336D8C3-1AFC-47B5-92E9-13009EC56033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A336D8C3-1AFC-47B5-92E9-13009EC56033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A336D8C3-1AFC-47B5-92E9-13009EC56033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
