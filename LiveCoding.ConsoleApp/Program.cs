@@ -23,90 +23,38 @@ namespace LiveCoding.ConsoleApp
 
             // Filtere Schüler nach der Klasse => 5ABIF
             // Sortiere nach dem Nachnamen
-            IEnumerable<Pupil> pupils5abif =
-                pupils
-                    .Where(p => p.ClassName == "5ABIF")
-                    .OrderBy(p => p.LastName);
-
-            PrintResult("Schüler der 5ABIF", pupils5abif);
+            
 
 
             // Filtere Schüler nach der Klasse => 5ABIF
             // Selektiere jeden zweiten Schüler
             // Sortiere nach dem Nachnamen
-            IEnumerable<Pupil> pupils5abifIdx2 =
-                pupils5abif
-                    .Where((p, idx) => idx % 2 == 0);
-
-            PrintResult("Jeden 2. Schüler der 5ABIF", pupils5abifIdx2);
+            
 
             // Filtere Schüler nach der Klasse => 5ABIF
             // Selektiere jeden zweiten Schüler
             // Sortiere nach dem Nachnamen
             // Liefere nur Nr, Nachname
 
-            var pupils5abifIdx2WithProjection =
-                pupils5abifIdx2
-                    .Select(p => new
-                    {
-                        Nr = p.Id,
-                        Nachname = p.LastName
-                    });
-
-            PrintResult("Jeden 2. Schüler der 5ABIF", pupils5abifIdx2WithProjection);
+            
 
             // Gruppiere die Schüler nach deren Klasse
             // Berechne die Anzahl der Schüler pro Klasse
             // Sortiere die Klasse nach der Anzahl der Schüler absteigend
-            var classStatistics = pupils
-                .GroupBy(p => p.ClassName)
-                .Select(group => new
-                {
-                    Klasse = group.Key,
-                    AnzSchueler = group.Count()
-                })
-                .OrderByDescending(classGroup => classGroup.AnzSchueler);
-            PrintResult("Klassen und Schüleranzahl", classStatistics);
+            
 
             // Führe einen GroupJoin (SQL: LEFT OUTER JOIN) zw. Klassen und Schülern durch
             // Gruppiere die Schüler nach deren Klasse
             // Berechne die Anzahl der Schüler pro Klasse
             // Sortiere die Klasse nach der Anzahl der Schüler absteigend
-            var classStatistics2Enhanced =
-                classes.GroupJoin(pupils,
-                    c => c.Name,
-                    p => p.ClassName,
-                    (c, p) => new
-                    {
-                        ClassName = c.Name,
-                        ClassType = c.ClassType,
-                        PupilsCount = p.Count()
-                    }
-                )
-                .OrderByDescending(g => g.PupilsCount);
-
-            PrintResult("Klassen und Schüleranzahl (GroupJoin)", classStatistics2Enhanced);
+            
 
             // Bilde die Ziffernsumme aller ungerader Zahlen zw. 1 und 99
-            int sumOfOddNumbers = Enumerable
-                .Range(1, 99)
-                .Where(nr => nr % 2 == 1)
-                .Sum();
-            Console.WriteLine($"Ziffernsumme => {sumOfOddNumbers}");
+            
 
             // Gib zweimal 5 Zufallszahlen (zw. 1 und 10) aus und vergleiche das Ergebnis
             // Wird zweimal das gleiche Ergebnis ausgegeben?+
-            Random rand = new Random();
-            IEnumerable<int> zufallszahlen =
-                Enumerable
-                .Range(1, 5)
-                .Select(nr => rand.Next(1, 11));
-            PrintResult("Zufallszahlen 1a", zufallszahlen);
-            PrintResult("Zufallszahlen 1b", zufallszahlen);
-
-            IEnumerable<int> zufallszahlenPersistiert = zufallszahlen.ToArray();
-            PrintResult("Zufallszahlen 2a", zufallszahlenPersistiert);
-            PrintResult("Zufallszahlen 2b", zufallszahlenPersistiert);
+            
         }
 
         /// <summary>
@@ -114,25 +62,7 @@ namespace LiveCoding.ConsoleApp
         /// </summary>
         private static IEnumerable<Pupil> LoadPupils()
         {
-            return File.ReadAllLines(FileNamePupils, encoding: Encoding.UTF8)
-                .Skip(1)
-                .Select(line =>
-                {
-                    string[] parts = line.Split(';');
-
-                    //TODO: Check for correct data formats
-
-                    return new Pupil()
-                    {
-                        Id = int.Parse(parts[0]),
-                        LastName = parts[1],
-                        FirstName = parts[2],
-                        ClassName = parts[3]
-
-                    };
-                })
-                .OrderBy(pupil => pupil.ClassName)
-                .ThenBy(pupil => pupil.LastName);
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -140,22 +70,7 @@ namespace LiveCoding.ConsoleApp
         /// </summary>
         private static IEnumerable<Class> LoadClasses()
         {
-            return File.ReadAllLines(FileNameClasses, encoding: Encoding.UTF8)
-                .Skip(1)
-                .Select(line =>
-                {
-                    string[] parts = line.Split(';');
-
-                    //TODO: Check for correct data formats
-
-                    return new Class()
-                    {
-                        Name = parts[0],
-                        ClassType = (ClassType)Enum.Parse(typeof(ClassType), parts[1], true)
-
-                    };
-                })
-                .OrderBy(c => c.Name);
+            throw new NotImplementedException();
         }
 
         /// <summary>
